@@ -12,6 +12,9 @@
   },
   "author": "Jessica Lim",
   "license": "ISC",
+  "bin": {
+    "note": "bin/note"
+  },
   "bugs": {
     "url": "https://github.com/JessicaLim8/NoteTaker/issues"
   },
