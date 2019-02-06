@@ -3,6 +3,7 @@ const add = require('./commands/add');
 const list = require('./commands/list');
 const remove = require('./commands/remove');
 const version = require('./commands/version');
+const help = require('./commands/help');
 
 module.exports = () => {
   const args = minimist(process.argv.slice(2));
@@ -12,6 +13,10 @@ module.exports = () => {
   // Usage: note -v or note --version
   if (args.v || args.version) {
     cmd = 'version';
+  }
+  // Usage: note -h or note --help
+  if (args.h || args.help) {
+    cmd = 'help';
   }
 
   switch (cmd) {
@@ -26,6 +31,9 @@ module.exports = () => {
       break;
     case 'version':
       version();
+      break;
+    case 'help':
+      help();
       break;
     default:
       console.error(`"${cmd}" is not a valid command`);
