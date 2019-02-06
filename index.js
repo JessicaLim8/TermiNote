@@ -7,7 +7,8 @@ const help = require('./commands/help');
 
 module.exports = () => {
   const args = minimist(process.argv.slice(2));
-  let cmd = args._[0];
+  // When args._[0] is undefined, cmd will be help
+  let cmd = args._[0] || 'help';
 
   // Added to support the more traditional method of passing flags
   // Usage: note -v or note --version
