@@ -1,0 +1,22 @@
+{
+  "name": "notetaker",
+  "version": "1.0.0",
+  "description": "Application allowing for users to keep track of notes and to-dos via commandline",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JessicaLim8/NoteTaker.git"
+  },
+  "author": "Jessica Lim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JessicaLim8/NoteTaker/issues"
+  },
+  "homepage": "https://github.com/JessicaLim8/NoteTaker#readme",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
+}
