@@ -19,13 +19,26 @@ Create javascript objects that have different properties
 * If I have alot of note, it might get hard to read
 * Other than when the info is displayed, it will be really ugly to sift through the data and see how it looks 
 
+
 ## Idea #2: Database
 
-Use a database such as SQL
+Use a database such as SQL 
+* Incluse a title and then information for each note
+* Kind of the way a javascript object would have boolean, or like properties 
+* Each note would have a bunch properties that describe its appearance and where it appears, where it is saved etc. 
+* Have different tables as well, so we can have tables for different sets of notes,  although I'm not quite sure how they work
 
 ### Pros
+* Cleaner than objetcs I think
+* Fits more data
+* Can be read more easily
+* Allows for more data to be properly stored
 
 ### Cons
+* it requires communication between my laptop and a server i think
+* what if i dont have internet
+* I have zero clue how data bases work
+* Naming is once again an issue
 
 
 ## Idea #3
