@@ -41,12 +41,21 @@ Use a database such as SQL
 * Naming is once again an issue
 
 
-## Idea #3
+## Idea #3: TextFiles
 
-### No Clue
+Use a textfile
+* Keep all notes in files corresponding to the appropriate note group I want it to be a part of
+* If a new note file is made, a new file can be made
+* Parse through the new files and loops through everything, indexing each line
+* Rewrite the entire file every time edits are made
 
-### Pros
+### Pros 
+* Can be easily viewed if file is open
+* I know how to read and write a text file
 
 ### Cons
+* So inefficient
+* Really messy
+* Hard to keep data on any of the notes
 
 
