@@ -1,5 +1,5 @@
 {
-  "name": "notetaker",
+  "name": "TermiNote",
   "version": "1.0.0",
   "description": "Application allowing for users to keep track of notes and to-dos via commandline",
   "main": "index.js",
