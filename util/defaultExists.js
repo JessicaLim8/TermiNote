@@ -4,7 +4,6 @@ const fileExists = require('./fileExists');
 const makeFile = require('./makeFile');
 const error = require('./error');
 
-
 module.exports = (args) => {
   return new Promise(async (resolve) => {
     if (!fileExists('default.json') || !fileExists(require(dir + 'default.json'))) {
@@ -14,5 +13,5 @@ module.exports = (args) => {
     }
     resolve();
   });
-}
+};
 
