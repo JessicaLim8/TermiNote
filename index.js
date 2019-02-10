@@ -2,15 +2,19 @@ const minimist = require('minimist');
 const add = require('./commands/add');
 const list = require('./commands/list');
 const remove = require('./commands/remove');
+const jsonCheck = require('./util/jsonCheck');
 const version = require('./commands/version');
 const help = require('./commands/help');
 const dirExists  = require('./util/dirExists');
 const setDefault = require('./commands/default');
+const fileExists = require('./util/fileExists');
+const makeFile = require('./util/makeFile');
 
 module.exports = () => {
   const args = minimist(process.argv.slice(2), {
     string: ['f', 'file'],
   });
+  let filename = args.f || args.file;
 
   dirExists();
 
@@ -26,6 +30,17 @@ module.exports = () => {
   if (args.h || args.help) {
     cmd = 'help';
   }
+  if (cmd !== 'default') {
+      if (filename) {
+        filename = jsonCheck(filename);
+        if (!fileExists(filename)) {
+          makeFile(filename);
+        }
+      } else {
+        filename = require(`${require('os').homedir()}/.terminote/default.json`);
+      }
+  }
+  args.f = filename;
 
   switch (cmd) {
     case 'add':
