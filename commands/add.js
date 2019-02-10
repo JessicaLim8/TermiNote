@@ -1,20 +1,11 @@
 const fs = require('fs');
+const NOTES_FILE = 'notes.json';
+const TODOS_FILE = 'todos.json';
+const dir = `${require('os').homedir()}/.terminote/`;
+const data = require(dir + TODOS_FILE);
 
 module.exports = (args) => {
-  const dir = `${require('os').homedir()}/.terminote/`;
-  const NOTES_FILE = 'notes.json';
-  const TODOS_FILE = 'todos.json';
 
-  // Check if ~/.terminote directory exists. If not, create the directory
-  try {
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
-    }
-  } catch (err) {
-    console.error('An error occured when attempting to create the ~/.terminote directory.');
-  }
-
-  const data = require(dir + TODOS_FILE);
   const { entries, type } = data;
   const entry = {
     content: args._[1],
