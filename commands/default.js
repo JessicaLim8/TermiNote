@@ -26,6 +26,6 @@ module.exports = (args) => {
       }
     });
   }
-  fs.writeFile((dir + 'default.json'), JSON.stringify(filename), (err) => err && console.error(err));
+  fs.writeFileSync((dir + 'default.json'), JSON.stringify(filename), (err) => err && console.error(err));
 };
 

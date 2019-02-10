@@ -13,6 +13,6 @@ module.exports = (args) => {
   entries.push(entry);
 
   // To add to the to-dos file, use the path `dir + TODOS_FILE`
-  fs.writeFile(dir + args.f, JSON.stringify(data), (err) => err && console.error(err));
+  fs.writeFileSync(dir + args.f, JSON.stringify(data), (err) => err && console.error(err));
 };
 
