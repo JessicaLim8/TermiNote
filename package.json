@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/JessicaLim8/NoteTaker#readme",
   "dependencies": {
+    "inquirer": "^6.2.2",
     "minimist": "^1.2.0"
   }
 }
