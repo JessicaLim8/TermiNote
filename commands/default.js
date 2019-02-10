@@ -9,7 +9,7 @@ const dir = `${require('os').homedir()}/.terminote/`;
 module.exports = (args) => {
   let filename = args.f || args.file;
   if (!filename) {
-    error('Error! Please put a -f flag in front of your filename', true);
+    error('Error! Please put a -f followed by a <filename> to use the note default command', true);
   }
   filename = jsonCheck(filename);
   if (!fileExists(filename)) {
