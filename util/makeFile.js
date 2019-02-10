@@ -21,13 +21,13 @@ module.exports = (args) => {
       type: 'list',
       message: 'What colour would you like the title to be?',
       name: 'titleColour',
-      choices: ['white', 'black', 'cyan', 'green', 'blue'],
+      choices: ['white', 'black', 'red', 'magenta', 'yellow', 'green', 'blue'],
     },
     {
       type: 'list',
       message: 'What is the default colour of this list?',
       name: 'colour',
-      choices: ['white', 'black', 'cyan', 'green', 'blue'],
+      choices: ['white', 'black', 'red', 'magenta', 'yellow', 'green', 'blue'],
     }];
     if (!args.f && !args.file) {
       questions.unshift({
