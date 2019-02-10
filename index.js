@@ -4,10 +4,12 @@ const list = require('./commands/list');
 const remove = require('./commands/remove');
 const version = require('./commands/version');
 const help = require('./commands/help');
+const dirExists  = require('./util/dirExists');
 
 module.exports = () => {
   const args = minimist(process.argv.slice(2));
   // When args._[0] is undefined, cmd will be help
+
   let cmd = args._[0] || 'help';
 
   // Added to support the more traditional method of passing flags
@@ -19,6 +21,8 @@ module.exports = () => {
   if (args.h || args.help) {
     cmd = 'help';
   }
+
+  dirExists();
 
   switch (cmd) {
     case 'add':
