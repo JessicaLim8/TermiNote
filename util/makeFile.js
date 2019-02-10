@@ -5,17 +5,17 @@ const fs = require('fs');
 module.exports = (args) => {
   let filename;
   const questions = [{
-      type: 'list',
-      message: 'What kind of notes would you like this file to contain?',
-      name: 'type',
-      choices: ['Checkboxes', 'Dot-jots'],
-    },
-    {
-      type: 'list',
-      message: 'What is the default colour of this list',
-      name: 'colour',
-      choices: ['white', 'black', 'cyan', 'green', 'blue'],
-    }];
+    type: 'list',
+    message: 'What kind of notes would you like this file to contain?',
+    name: 'type',
+    choices: ['Checkboxes', 'Dot-jots'],
+  },
+  {
+    type: 'list',
+    message: 'What is the default colour of this list',
+    name: 'colour',
+    choices: ['white', 'black', 'cyan', 'green', 'blue'],
+  }];
   if (!args.f && !args.file) {
     questions.unshift({
       type: 'input',

@@ -10,5 +10,5 @@ module.exports = () => {
   } catch (err) {
     console.error('An error occured when attempting to create the ~/.terminote directory.');
   }
-}
+};
 

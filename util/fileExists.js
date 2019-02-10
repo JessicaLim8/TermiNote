@@ -6,5 +6,6 @@ module.exports = (filename) => {
     filename += '.json';
   }
   return fs.existsSync(dir + filename);
-}
+};
+
 
