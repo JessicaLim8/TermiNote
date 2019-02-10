@@ -96,4 +96,4 @@ tags
 # Persistent undo
 [._]*.un~
 
-.terminote/
+.terminote
