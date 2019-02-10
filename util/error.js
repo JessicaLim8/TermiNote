@@ -1,5 +1,5 @@
-module.exports = (message, exit) => {
+module.exports = (message, exit, code = 1) => {
   console.error(message);
-  exit && process.exit(1);
+  exit && process.exit(code);
 };
 
