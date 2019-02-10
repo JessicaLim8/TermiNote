@@ -1,6 +1,7 @@
 const dir = `${require('os').homedir()}/.terminote/`;
 const inquirer = require('inquirer');
 const fs = require('fs');
+const jsonCheck = require('./jsonCheck');
 
 module.exports = (args) => {
   let filename;
@@ -25,17 +26,13 @@ module.exports = (args) => {
   } else {
     filename = args.f || args.file;
   }
-  console.log(filename);
   inquirer.prompt(questions).then((settings) => {
     if (!filename) {
       filename = settings.name;
       delete settings.name;
     }
-    if (!filename.includes('.json')) {
-      filename += '.json';
-    }
     settings.entries = [];
-    fs.writeFile((dir + filename), JSON.stringify(settings), (err) => err && console.error(err));
-  }).catch((err) => console.error(err));
+    fs.writeFile((dir + jsonCheck(filename)), JSON.stringify(settings), (err) => err && console.error(err));
+  });
 };
 

@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const fileExists = require('../util/fileExists');
 const makeFile = require('../util/makeFile');
 const error = require('../util/error');
+const jsonCheck = require('../util/jsonCheck');
 const dir = `${require('os').homedir()}/.terminote/`;
 
 module.exports = (args) => {
@@ -10,9 +11,7 @@ module.exports = (args) => {
   if (!filename) {
     error('Error! Please put a -f flag in front of your filename', true);
   }
-  else if (!filename.includes('.json')) {
-    filename += '.json';
-  }
+  filename = jsonCheck(filename);
   if (!fileExists(filename)) {
     inquirer.prompt([{
       type: 'confirm',
@@ -22,8 +21,7 @@ module.exports = (args) => {
     }]).then((answer) => {
       if (answer.response) {
         makeFile(args);
-      }
-      else {
+      } else {
         error('', true, 0);
       }
     });
