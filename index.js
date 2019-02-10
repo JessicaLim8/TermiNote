@@ -31,14 +31,14 @@ module.exports = () => {
     cmd = 'help';
   }
   if (cmd !== 'default') {
-      if (filename) {
-        filename = jsonCheck(filename);
-        if (!fileExists(filename)) {
-          makeFile(filename);
-        }
-      } else {
-        filename = require(`${require('os').homedir()}/.terminote/default.json`);
+    if (filename) {
+      filename = jsonCheck(filename);
+      if (!fileExists(filename)) {
+        makeFile(filename);
       }
+    } else {
+      filename = require(`${require('os').homedir()}/.terminote/default.json`);
+    }
   }
   args.f = filename;
 
