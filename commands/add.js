@@ -14,7 +14,6 @@ module.exports = (args) => {
 
   entries.push(entry);
 
-  // To add to the notes file, use the path `dir + NOTES_FILE`
   // To add to the to-dos file, use the path `dir + TODOS_FILE`
   fs.writeFile(dir + TODOS_FILE, JSON.stringify(data), (err) => err && console.error(err));
 };
