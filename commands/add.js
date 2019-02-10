@@ -5,7 +5,6 @@ const dir = `${require('os').homedir()}/.terminote/`;
 const data = require(dir + TODOS_FILE);
 
 module.exports = (args) => {
-
   const { entries, type } = data;
   const entry = {
     content: args._[1],
@@ -14,7 +13,6 @@ module.exports = (args) => {
   };
 
   entries.push(entry);
-
 
   // To add to the notes file, use the path `dir + NOTES_FILE`
   // To add to the to-dos file, use the path `dir + TODOS_FILE`
