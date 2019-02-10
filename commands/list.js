@@ -19,6 +19,9 @@ module.exports = (args) => {
     } else {
       checkbox = '❌';
     }
+    if (!entries[i].content) {
+      continue;
+    }
     console.log(checkbox + '   ' + entries[i].content[colour]);
   }
 };
