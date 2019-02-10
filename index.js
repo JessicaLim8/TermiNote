@@ -20,7 +20,6 @@ module.exports = async () => {
   dirExists();
   await defaultExists(args);
 
-
   // When args._[0] is undefined, cmd will be help
   let cmd = args._[0] || 'help';
 
