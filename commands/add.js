@@ -9,7 +9,7 @@ module.exports = (args) => {
   const entry = {
     content: args._[1],
     checked: args.c || false,
-    colour: "",
+    colour: '',
   };
 
   entries.push(entry);
