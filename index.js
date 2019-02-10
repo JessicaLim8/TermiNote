@@ -66,7 +66,7 @@ module.exports = async () => {
       break;
   }
 
-  if ((args.l || args.list) && args._[0] != 'list') {
+  if ((args.l || args.list) && args._[0] !== 'list') {
     list(args);
   }
 };
