@@ -10,7 +10,7 @@ const setDefault = require('./commands/default');
 const fileExists = require('./util/fileExists');
 const makeFile = require('./util/makeFile');
 
-module.exports = () => {
+module.exports = async () => {
   const args = minimist(process.argv.slice(2), {
     string: ['f', 'file'],
   });
@@ -34,7 +34,7 @@ module.exports = () => {
     if (filename) {
       filename = jsonCheck(filename);
       if (!fileExists(filename)) {
-        makeFile(filename);
+        await makeFile(args);
       }
     } else {
       filename = require(`${require('os').homedir()}/.terminote/default.json`);

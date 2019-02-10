@@ -1,11 +1,9 @@
 const fs = require('fs');
-const NOTES_FILE = 'notes.json';
-const TODOS_FILE = 'todos.json';
 const dir = `${require('os').homedir()}/.terminote/`;
-const data = require(dir + TODOS_FILE);
 
 module.exports = (args) => {
-  const { entries, type } = data;
+  const data = require(dir + args.f);
+  const { entries } = data;
   const entry = {
     content: args._[1],
     checked: args.c || false,
@@ -15,6 +13,6 @@ module.exports = (args) => {
   entries.push(entry);
 
   // To add to the to-dos file, use the path `dir + TODOS_FILE`
-  fs.writeFile(dir + TODOS_FILE, JSON.stringify(data), (err) => err && console.error(err));
+  fs.writeFile(dir + args.f, JSON.stringify(data), (err) => err && console.error(err));
 };
 
