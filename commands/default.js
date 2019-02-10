@@ -1,17 +1,18 @@
-const fileExists = require('../util/fileExists');
 const inquirer = require('inquirer');
+const fileExists = require('../util/fileExists');
+const makeFile = require('../util/makeFile');
 
 module.exports = (args) => {
-  const filename = args._[1];
+  const filename = args.f || args.file;
   if (!fileExists(filename)) {
     inquirer.prompt([{
       type: 'confirm',
       name: 'response',
       message: `The file "${filename}" does not exist yet, are you sure you would like to continue?`,
-      default: 'Yes',
+      default: true,
     }]).then((answer) => {
       if (answer.response) {
-        //make new file
+        makeFile(args);
       } else {
         //quit
       }
