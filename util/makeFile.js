@@ -13,15 +13,26 @@ module.exports = (args) => {
       choices: ['Checkboxes', 'Dot-jots'],
     },
     {
+      type: 'input',
+      message: 'What would you like to title your file? (Note: this is the displayed title, not your file name)',
+      name: 'title',
+    },
+    {
+      type: 'list',
+      message: 'What colour would you like the title to be?',
+      name: 'titleColour',
+      choices: ['white', 'black', 'red', 'magenta', 'yellow', 'green', 'blue'],
+    },
+    {
       type: 'list',
       message: 'What is the default colour of this list?',
       name: 'colour',
-      choices: ['white', 'black', 'cyan', 'green', 'blue'],
+      choices: ['white', 'black', 'red', 'magenta', 'yellow', 'green', 'blue'],
     }];
     if (!args.f && !args.file) {
       questions.unshift({
         type: 'input',
-        message: 'What would you like to call your new file?',
+        message: 'What would you like the name of your file to be?',
         name: 'name',
       });
     } else {

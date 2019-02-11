@@ -65,5 +65,9 @@ module.exports = async () => {
       console.error(`"${cmd}" is not a valid command`);
       break;
   }
+
+  if ((args.l || args.list) && args._[0] !== 'list') {
+    list(args);
+  }
 };
 
