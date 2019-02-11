@@ -9,6 +9,7 @@ const dirExists  = require('./util/dirExists');
 const setDefault = require('./commands/default');
 const fileExists = require('./util/fileExists');
 const makeFile = require('./util/makeFile');
+const defaultExists = require('./util/defaultExists');
 
 module.exports = async () => {
   const args = minimist(process.argv.slice(2), {
@@ -17,6 +18,7 @@ module.exports = async () => {
   let filename = args.f || args.file;
 
   dirExists();
+  await defaultExists(args);
 
   // When args._[0] is undefined, cmd will be help
   let cmd = args._[0] || 'help';

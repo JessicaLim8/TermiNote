@@ -45,7 +45,7 @@ module.exports = (args) => {
       }
       settings.entries = [];
       fs.writeFileSync((dir + jsonCheck(filename)), JSON.stringify(settings), (err) => err && console.error(err));
-      resolve();
+      resolve(filename);
     });
   });
 };
