@@ -6,7 +6,7 @@ module.exports = (args) => {
   let checkbox;
   console.log(title[titleColour] + '\n');
 
-  if (!entries.length) {
+  if (entries.length === 0) {
     error('There are no entries in this list', true, 0);
   }
   for (let i = 0; i < entries.length; i++) {
