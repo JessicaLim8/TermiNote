@@ -10,6 +10,12 @@ module.exports = (args) => {
     error('There are no entries in this list', true, 0);
   }
   for (let i = 0; i < entries.length; i++) {
+    // functionality for displaying items to delete
+    if (args.dlt) {
+      dlt = `${i}\t`;
+    } else {
+      dlt = '';
+    }
     if (type === 'Dot-jots') {
       checkbox = ' ●';
     } else if (entries[i].checked) {
@@ -18,9 +24,11 @@ module.exports = (args) => {
       checkbox = '❌';
     }
     if (!entries[i].content) {
+      delete entries[i];
+      i --;
       continue;
     }
-    console.log(checkbox + '   ' + entries[i].content[colour]);
+    console.log(dlt + checkbox + '   ' + entries[i].content[colour]);
   }
 };
 
