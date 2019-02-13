@@ -2,12 +2,13 @@ const minimist = require('minimist');
 const add = require('./commands/add');
 const list = require('./commands/list');
 const remove = require('./commands/remove');
-const jsonCheck = require('./util/jsonCheck');
 const version = require('./commands/version');
+const deleteEntry = require('./commands/delete');
 const help = require('./commands/help');
-const dirExists  = require('./util/dirExists');
 const setDefault = require('./commands/default');
 const fileExists = require('./util/fileExists');
+const jsonCheck = require('./util/jsonCheck');
+const dirExists  = require('./util/dirExists');
 const makeFile = require('./util/makeFile');
 const defaultExists = require('./util/defaultExists');
 
@@ -51,8 +52,8 @@ module.exports = async () => {
     case 'list':
       list(args);
       break;
-    case 'remove':
-      remove(args);
+    case 'deleteEntry':
+      deleteEntry(args);
       break;
     case 'version':
       version();
