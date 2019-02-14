@@ -19,12 +19,12 @@ module.exports = async (args) => {
       choices: files,
     }]);
     file = selection;
+  }
   //checks to see if the file is valid
   if (!fileExists(file)) {
     error('Your file does not exist', true);
   }
   file = jsonCheck(file);
-  }
   // confirms user wants to delete file
   let { confirm } = await inquirer.prompt([{
     type: 'confirm',
