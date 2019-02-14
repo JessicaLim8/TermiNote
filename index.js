@@ -2,6 +2,7 @@ const minimist = require('minimist');
 const add = require('./commands/add');
 const list = require('./commands/list');
 const remove = require('./commands/remove');
+const deleteFile = require('./commands/deleteFile');
 const jsonCheck = require('./util/jsonCheck');
 const version = require('./commands/version');
 const help = require('./commands/help');
@@ -32,7 +33,7 @@ module.exports = async () => {
   if (args.h || args.help) {
     cmd = 'help';
   }
-  if (cmd !== 'default') {
+  if (cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
     if (filename) {
       filename = jsonCheck(filename);
       if (!fileExists(filename)) {
@@ -59,6 +60,9 @@ module.exports = async () => {
       break;
     case 'help':
       help();
+      break;
+    case 'deletefile':
+      deleteFile(args);
       break;
     case 'default':
       setDefault(args);

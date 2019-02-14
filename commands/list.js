@@ -4,7 +4,7 @@ const error = require('../util/error');
 module.exports = (args) => {
   const { title, titleColour, colour, type, entries } = require(`${require('os').homedir()}/.terminote/` + args.f);
   let checkbox;
-  console.log(title[titleColour] + '\n');
+  console.log(title[titleColour]);
 
   if (entries.length === 0) {
     error('There are no entries in this list', true, 0);
