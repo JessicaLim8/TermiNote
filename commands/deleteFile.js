@@ -2,17 +2,30 @@ const fs = require('fs');
 const dir = `${require('os').homedir()}/.terminote/`;
 const inquirer = require('inquirer');
 const error = require('../util/error');
+const jsonCheck = require('../util/jsonCheck');
+const fileExists = require('../util/fileExists');
 
-module.exports = async () => {
-  let files = fs.readdirSync(dir).filter((file) => {
-    return file !== 'default.json';
-  });
-  let { file } = await inquirer.prompt([{
-    type: 'list',
-    name: 'file',
-    message: 'Please select the file you would like to delete',
-    choices: files,
-  }]);
+module.exports = async (args) => {
+  let file = args.f || args.file;
+  //if no filename was given
+  if (!file) {
+    let files = fs.readdirSync(dir).filter((file) => {
+      return file !== 'default.json';
+    });
+    let { selection } = await inquirer.prompt([{
+      type: 'list',
+      name: 'selection',
+      message: 'Please select the file you would like to delete',
+      choices: files,
+    }]);
+    file = selection;
+  //checks to see if the file is valid
+  if (!fileExists(file)) {
+    error('Your file does not exist', true);
+  }
+  file = jsonCheck(file);
+  }
+  // confirms user wants to delete file
   let { confirm } = await inquirer.prompt([{
     type: 'confirm',
     name: 'confirm',
@@ -26,7 +39,7 @@ module.exports = async () => {
       if (err) {
         return err;
       }
-      console.log(`Your file ${file} has been deleted`);
+      console.log(`Your file "${file}" has been deleted`);
     });
   }
 };

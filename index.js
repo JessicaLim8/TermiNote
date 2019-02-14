@@ -33,7 +33,7 @@ module.exports = async () => {
   if (args.h || args.help) {
     cmd = 'help';
   }
-  if (cmd !== 'default') {
+  if (cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
     if (filename) {
       filename = jsonCheck(filename);
       if (!fileExists(filename)) {
