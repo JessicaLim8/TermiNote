@@ -37,7 +37,7 @@ module.exports = async () => {
     await defaultExists(args);
   };
 
-  if (cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
+  if (cmd !== 'init' && cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
     if (filename) {
       filename = jsonCheck(filename);
       if (!fileExists(filename)) {
