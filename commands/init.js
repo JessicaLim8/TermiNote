@@ -4,8 +4,8 @@ const error = require('../util/error');
 
 module.exports = (args) => {
   if (fileExists()) {
-    error("This file already exists", true);
+    error('This file already exists', true);
   }
-  makeFile(args)
+  makeFile(args);
 };
 

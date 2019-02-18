@@ -35,7 +35,7 @@ module.exports = async () => {
   dirExists();
   if (cmd !== 'help' && cmd !== 'version') {
     await defaultExists(args);
-  };
+  }
 
   if (cmd !== 'init' && cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
     if (filename) {
