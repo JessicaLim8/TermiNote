@@ -1,6 +1,6 @@
 module.exports = (filename) => {
   if (!filename) {
-    return filename;
+    return;
   }
   if (!filename.includes('.json')) {
     return filename + '.json';
