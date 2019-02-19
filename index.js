@@ -3,6 +3,7 @@ const add = require('./commands/add');
 const list = require('./commands/list');
 const remove = require('./commands/remove');
 const deleteFile = require('./commands/deleteFile');
+const init = require('./commands/init');
 const jsonCheck = require('./util/jsonCheck');
 const version = require('./commands/version');
 const help = require('./commands/help');
@@ -18,9 +19,6 @@ module.exports = async () => {
   });
   let filename = args.f || args.file;
 
-  dirExists();
-  await defaultExists(args);
-
   // When args._[0] is undefined, cmd will be help
   let cmd = args._[0] || 'help';
 
@@ -33,7 +31,13 @@ module.exports = async () => {
   if (args.h || args.help) {
     cmd = 'help';
   }
-  if (cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
+
+  dirExists();
+  if (cmd !== 'help' && cmd !== 'version') {
+    await defaultExists(args);
+  }
+
+  if (cmd !== 'init' && cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
     if (filename) {
       filename = jsonCheck(filename);
       if (!fileExists(filename)) {
@@ -43,6 +47,7 @@ module.exports = async () => {
       filename = require(`${require('os').homedir()}/.terminote/default.json`);
     }
   }
+
   args.f = filename;
 
   switch (cmd) {
@@ -57,6 +62,9 @@ module.exports = async () => {
       break;
     case 'version':
       version();
+      break;
+    case 'init':
+      init(args);
       break;
     case 'help':
       help();
