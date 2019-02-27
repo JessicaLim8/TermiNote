@@ -5,6 +5,6 @@ module.exports = () => {
   let files = fs.readdirSync(dir).filter((file) => {
     return file !== 'default.json';
   });
-  return files
+  return files;
 };
 
