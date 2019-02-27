@@ -4,14 +4,13 @@ const inquirer = require('inquirer');
 const error = require('../util/error');
 const jsonCheck = require('../util/jsonCheck');
 const fileExists = require('../util/fileExists');
+const filesList = require('../util/filesList');
 
 module.exports = async (args) => {
   let file = args.f || args.file;
   //if no filename was given
   if (!file) {
-    let files = fs.readdirSync(dir).filter((file) => {
-      return file !== 'default.json';
-    });
+    let files = filesList();
     let { selection } = await inquirer.prompt([{
       type: 'list',
       name: 'selection',
