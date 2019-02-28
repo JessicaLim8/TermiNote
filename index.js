@@ -1,5 +1,6 @@
 const minimist = require('minimist');
 const add = require('./commands/add');
+const lsfiles = require('./commands/lsfiles');
 const list = require('./commands/list');
 const remove = require('./commands/remove');
 const deleteFile = require('./commands/deleteFile');
@@ -72,6 +73,8 @@ module.exports = async () => {
     case 'deletefile':
       deleteFile(args);
       break;
+    case 'lsfiles':
+      lsfiles();
     case 'default':
       setDefault(args);
       break;
