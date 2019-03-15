@@ -1,7 +1,9 @@
 const fs = require('fs');
 const dir = `${require('os').homedir()}/.terminote/`;
+const chooseFile = require('../util/chooseFile');
 
 module.exports = (args) => {
+  chooseFile();
   const data = require(dir + args.f);
   const { entries } = data;
   const entry = {
