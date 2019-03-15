@@ -18,7 +18,9 @@ module.exports = async () => {
   const args = minimist(process.argv.slice(2), {
     string: ['f', 'file'],
   });
+  console.log(args);
   let filename = args.f || args.file;
+  args.f = filename;
 
   // When args._[0] is undefined, cmd will be help
   let cmd = args._[0] || 'help';
@@ -38,19 +40,8 @@ module.exports = async () => {
     await defaultExists(args);
   }
 
-  if (cmd !== 'init' && cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
-    if (filename) {
-      filename = jsonCheck(filename);
-      if (!fileExists(filename)) {
-        await makeFile(args);
-      }
-    } else {
-      filename = require(`${require('os').homedir()}/.terminote/default.json`);
-    }
-  }
 
-  args.f = filename;
-
+//  if (cmd !== 'init' && cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
   switch (cmd) {
     case 'add':
       add(args);
