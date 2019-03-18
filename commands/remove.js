@@ -1,4 +1,4 @@
 module.exports = (args) => {
-  console.log('You removed a note!');
+  console.log('this command does not currently work');
 };
 

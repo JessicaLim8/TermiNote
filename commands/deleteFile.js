@@ -5,20 +5,13 @@ const error = require('../util/error');
 const jsonCheck = require('../util/jsonCheck');
 const fileExists = require('../util/fileExists');
 const filesList = require('../util/filesList');
+const chooseFile = require('../util/chooseFile');
 
 module.exports = async (args) => {
+  //forces a file to be chosen
+  if (!args.f && !args.file) { args.f = '' };
+  chooseFile(args);
   let file = args.f || args.file;
-  //if no filename was given
-  if (!file) {
-    let files = filesList();
-    let { selection } = await inquirer.prompt([{
-      type: 'list',
-      name: 'selection',
-      message: 'Please select the file you would like to delete',
-      choices: files,
-    }]);
-    file = selection;
-  }
   //checks to see if the file is valid
   if (!fileExists(file)) {
     error('Your file does not exist', true);

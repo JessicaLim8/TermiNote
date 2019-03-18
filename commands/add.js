@@ -1,11 +1,16 @@
 const fs = require('fs');
 const dir = `${require('os').homedir()}/.terminote/`;
 const chooseFile = require('../util/chooseFile');
+const error = require('../util/error');
 
-module.exports = (args) => {
-  chooseFile();
+module.exports = async (args) => {
+  args.prompt = 'add to';
+  await chooseFile(args);
   const data = require(dir + args.f);
   const { entries } = data;
+  if (!args._[1]) {
+    error("Error! There was no content to add");
+  };
   const entry = {
     content: args._[1],
     checked: args.c || false,
