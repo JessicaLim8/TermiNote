@@ -18,7 +18,7 @@ module.exports = async () => {
   const args = minimist(process.argv.slice(2), {
     string: ['f', 'file'],
   });
-  console.log(args);
+
   let filename = args.f || args.file;
   args.f = filename;
 
@@ -39,7 +39,6 @@ module.exports = async () => {
   if (cmd !== 'help' && cmd !== 'version') {
     await defaultExists(args);
   }
-
 
 //  if (cmd !== 'init' && cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
   switch (cmd) {
