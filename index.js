@@ -40,41 +40,50 @@ module.exports = async () => {
     await defaultExists(args);
   }
 
-//  if (cmd !== 'init' && cmd !== 'default' && cmd !== 'deletefile' && cmd !== 'help' && cmd !== 'version') {
-  switch (cmd) {
-    case 'add':
-      add(args);
-      break;
-    case 'list':
-      list(args);
-      break;
-    case 'remove':
-      remove(args);
-      break;
-    case 'version':
-      version();
-      break;
-    case 'init':
-      init(args);
-      break;
-    case 'help':
-      help();
-      break;
-    case 'deletefile':
-      deleteFile(args);
-      break;
-    case 'lsfiles':
-      lsfiles();
-    case 'default':
-      setDefault(args);
-      break;
-    default:
-      console.error(`"${cmd}" is not a valid command`);
-      break;
-  }
+  const cmdChoice = (cmd) => {
+    switch (cmd) {
+      case 'add':
+        add(args);
+        break;
+      case 'list':
+        list(args);
+        break;
+      case 'remove':
+        remove(args);
+        break;
+      case 'version':
+        version();
+        break;
+      case 'init':
+        init(args);
+        break;
+      case 'help':
+        help();
+        break;
+      case 'deletefile':
+        deleteFile(args);
+        break;
+      case 'lsfiles':
+        lsfiles();
+      case 'default':
+        setDefault(args);
+        break;
+      default:
+        console.error(`"${cmd}" is not a valid command`);
+        break;
+    }
+  };
 
-  if ((args.l || args.list) && args._[0] !== 'list') {
-    list(args);
-  }
+  const listFiles = () => {
+    if ((args.l || args.list) && args._[0] !== 'list') {
+      list(args);
+    }
+  };
+
+  let promise1 = new Promise((resolve, reject) => {
+    resolve(cmdChoice(cmd, args));
+  });
+
+  promise1.then(listFiles());
 };
 
